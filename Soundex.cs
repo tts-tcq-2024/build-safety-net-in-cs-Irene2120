@@ -41,7 +41,7 @@ public class Soundex
             }
         }
     }
-    public static bool AppendCode(char code ,char prevCode) =>code !=0 && code != prevCode)
+    public static bool AppendCode(char code ,char prevCode) =>code !=0 && code != prevCode;
     public static void SoundexCode(ref StringBuilder soundex)
     {
         while(soundex.Length<4)
