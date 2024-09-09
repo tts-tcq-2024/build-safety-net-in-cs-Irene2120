@@ -13,20 +13,21 @@ public class SoundexTests
 
         Assert.Equal(string.Empty,result);      //assert
     }
+    [Fact]
     public void GenerateSoundex_SingleCharacter_ReturnsPaddedCode()
     {
         string input ="A"; //arrange
         string result =Soundex.GenerateSoundex(input);   //act
         Assert.Equal("A000",result);         //act
     }
-
+    [Fact]
     public void GenerateSoundex_ValidName_ReturnsCorrectSoundex()
     {
         string input="Abcd";
         string result = Soundex.GenerateSoundex(input);
         Assert.Equal("0123",result);
     }
-            
+    [Fact]
     public void HandlesEmptyString()
     {
         Assert.Equal(string.Empty, Soundex.GenerateSoundex(""));
