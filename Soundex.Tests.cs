@@ -25,7 +25,7 @@ public class SoundexTests
     {
         string input="Abcd";
         string result = Soundex.GenerateSoundex(input);
-        Assert.Equal("0123",result);
+        Assert.Equal("A123",result);
     }
     [Fact]
     public void HandlesEmptyString()
