@@ -63,7 +63,7 @@ public class SoundexTests
     [Fact]
     public void GetSoundexCode_ValidCharacter_ReturnsCorrectCode()
     {
-        char character="B";
+        char character='B';
         
         char result = Soundex.GetSoundexCode(character);
         
