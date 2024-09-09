@@ -15,6 +15,7 @@ public class Soundex
 
         AppendingSoundexCharacters(name,soundex,ref prevCode);
         SoundexCode(ref soundex);
+        return soundex.ToString();
     }
     public static StringBuilder InitializeSoundex(string name)
     {
@@ -24,7 +25,7 @@ public class Soundex
     }
     public static void AppendingSoundexCharacters(string name , StringBuilder soundex,ref char prevCode)
     {
-        for (int i=1;i<name.Length && soundex.Length<4;i++)
+        for (int i=1 ;i<name.Length && soundex.Length<4 ;i++)
         {
             Characters(name[i],soundex,ref prevCode);
         }
