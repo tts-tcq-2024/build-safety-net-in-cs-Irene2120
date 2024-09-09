@@ -67,7 +67,7 @@ public class SoundexTests
         
         char result = Soundex.GetSoundexCode(character);
         
-        Assert.Equal("1",result);    
+        Assert.Equal('1',result);    
     }
             
     [Fact]
