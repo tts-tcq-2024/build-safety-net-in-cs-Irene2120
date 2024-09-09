@@ -29,9 +29,9 @@ public class Soundex
             Characters(name[i],soundex,ref prevCode);
         }
     }
-    public static void Characters(char characters,StringBuilder soundex,ref char prevCode)
+    public static void Characters(char character,StringBuilder soundex,ref char prevCode)
     {
-        if(char.isLetter(character))
+        if(char.IsLetter(character))
         {
             char code =GetSoundexCode(character);
             if(AppendCode(code,prevCode))
