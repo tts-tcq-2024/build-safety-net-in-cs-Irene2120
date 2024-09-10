@@ -71,6 +71,11 @@ public class SoundexTests
         Assert.Equal("H410",result);    //assert
     }
     [Fact]
+    public void HandlesEmptyString()
+    {
+        Assert.Equal(string.Empty,Soundex.GenerateSoundex(""));
+    }
+    [Fact]
     public void HandlesSingleCharacter()
     {
         Assert.Equal("A000", Soundex.GenerateSoundex("A"));
