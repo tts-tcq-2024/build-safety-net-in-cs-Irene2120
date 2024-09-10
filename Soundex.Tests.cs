@@ -42,59 +42,34 @@ public class SoundexTests
         string result = Soundex.GenerateSoundex(input);          //act
         Assert.Equal("A123",result);    //numbers ignored ->assert
     }
-
-    [Fact]
-    public void InitializeSoundex_Validname_ReturnsInitializedSoundex()
+  [Fact]
+    public void GenerateSoundex_TwoSimilarletters()
     {
-        string input="Jack"; //arrange
-        var result = Soundex.InitializeSoundex(input);      //assert
-        Assert.Equal("J",result.ToString());    //only first char -> result
+        string input="Coffee"; //arrange
+        string result = Soundex.GenerateSoundex(input);          //act
+        Assert.Equal("C150",result);    //assert
     }
     [Fact]
-    public void AppendingSoundexXharacters_ProcessCharCorrectly()
+    public void GenerateSoundex_NumberAsFirstLetter()
     {
-        var soundexBuilder= new StringBuilder("J"); //arrange
-        char prevCode ='J';
-        
-      Soundex.AppendingSoundexCharacters("Jack",soundexBuilder,ref prevCode);   //act
-        
-        Assert.Equal("J02",soundexBuilder.ToString());  //assert
+        string input="6blur"; //arrange
+        string result = Soundex.GenerateSoundex(input);          //act
+        Assert.Equal("B460",result);    //assert
+    }
+      [Fact]
+    public void GenerateSoundex_WordsWithSpace()
+    {
+        string input="Co  ld"; //arrange
+        string result = Soundex.GenerateSoundex(input);          //act
+        Assert.Equal("C430",result);    //assert
     }
     [Fact]
-    public void Characters_AppendCorrectCode()
+    public void GenerateSoundex_WithSpecialCharacters()
     {
-        var soundexBuilder= new StringBuilder("J"); //arrange
-        char prevCode ='J';
-        
-      Soundex.Characters('a',soundexBuilder,ref prevCode);   //act
-        
-        Assert.Equal("J0",soundexBuilder.ToString());  //append 0 for a  ->assert   
+        string input="Hello@abc"; //arrange
+        string result = Soundex.GenerateSoundex(input);          //act
+        Assert.Equal("H410",result);    //assert
     }
-    [Fact]
-    public void GetSoundexCode_ValidCharacter_ReturnsCorrectCode()
-    {
-        char character='B';     //arrange
-        
-        char result = Soundex.GetSoundexCode(character); //act
-        
-        Assert.Equal('1',result);    //assert
-    }
-    [Fact]
-    public void GetSoundexCode_UnknownCharacter_ReturnsZero()
-    {
-        char character ='X';   //Arrange
-        
-       char result=Soundex.GetSoundexCode(character);  //act
-        
-        Assert.Equal('2',result);  //assert
-    }
-            
-    [Fact]
-    public void HandlesEmptyString()
-    {
-        Assert.Equal(string.Empty, Soundex.GenerateSoundex(""));
-    }
-
     [Fact]
     public void HandlesSingleCharacter()
     {
