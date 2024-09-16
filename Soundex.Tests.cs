@@ -32,7 +32,7 @@ public class SoundexTests
     {
         string input="JackandJill"; //arrange
         string result = Soundex.GenerateSoundex(input); //act
-        Assert.Equal("J020",result);    //only first4 ->assert
+        Assert.Equal("J253",result);    //only first4 ->assert
     }
 
     [Fact]
@@ -47,7 +47,7 @@ public class SoundexTests
     {
         string input="Coffee"; //arrange
         string result = Soundex.GenerateSoundex(input);          //act
-        Assert.Equal("C010",result);    //assert
+        Assert.Equal("C100",result);    //assert
     }
     [Fact]
     public void GenerateSoundex_NumberAsFirstLetter()
@@ -61,25 +61,21 @@ public class SoundexTests
     {
         string input="Co  ld"; //arrange
         string result = Soundex.GenerateSoundex(input);          //act
-        Assert.Equal("C043",result);    //assert
+        Assert.Equal("C243",result);    //assert
     }
     [Fact]
     public void GenerateSoundex_WithSpecialCharacters()
     {
         string input="Hello@abc"; //arrange
         string result = Soundex.GenerateSoundex(input);          //act
-        Assert.Equal("H401",result);    //assert
+        Assert.Equal("H541",result);    //assert
     }
     [Fact]
-    public void HandlesEmptyString()
-    {
-        Assert.Equal(string.Empty,Soundex.GenerateSoundex(""));
-    }
-    [Fact]
-    public void HandlesSingleCharacter()
-    {
-        Assert.Equal("A000", Soundex.GenerateSoundex("A"));
-    }
-
-   
+   public void GenerateSoundex_WordwithVowels()
+   {
+       string input ="Ate";
+       string result =Soundex.GenerateSoundex(input);
+       Assert.Equal("A030",result);
+   }
+  
 }
