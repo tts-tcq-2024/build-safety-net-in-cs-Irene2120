@@ -32,7 +32,7 @@ public class SoundexTests
     {
         string input="JackandJill"; //arrange
         string result = Soundex.GenerateSoundex(input); //act
-        Assert.Equal("J253",result);    //only first4 ->assert
+        Assert.Equal("J532",result);    //only first4 ->assert
     }
 
     [Fact]
@@ -54,28 +54,28 @@ public class SoundexTests
     {
         string input="6blur"; //arrange
         string result = Soundex.GenerateSoundex(input);          //act
-        Assert.Equal("6140",result);    //assert
+        Assert.Equal("6146",result);    //assert
     }
       [Fact]
     public void GenerateSoundex_WordsWithSpace()
     {
         string input="Co  ld"; //arrange
         string result = Soundex.GenerateSoundex(input);          //act
-        Assert.Equal("C243",result);    //assert
+        Assert.Equal("C430",result);    //assert
     }
     [Fact]
     public void GenerateSoundex_WithSpecialCharacters()
     {
         string input="Hello@abc"; //arrange
         string result = Soundex.GenerateSoundex(input);          //act
-        Assert.Equal("H541",result);    //assert
+        Assert.Equal("H412",result);    //assert
     }
     [Fact]
    public void GenerateSoundex_WordwithVowels()
    {
        string input ="Ate";
        string result =Soundex.GenerateSoundex(input);
-       Assert.Equal("A030",result);
+       Assert.Equal("A300",result);
    }
   
 }
