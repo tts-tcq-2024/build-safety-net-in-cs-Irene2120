@@ -29,7 +29,7 @@ public class Soundex
         {   
         if(soundex.Length >= 4)       //if length of soundex is 4 or more then break
         {
-            breaki;
+            break;
         }
         Characters(currentchar,soundex,ref prevCode);
     }
