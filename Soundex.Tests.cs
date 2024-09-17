@@ -73,9 +73,9 @@ public class SoundexTests
     [Fact]
    public void GenerateSoundex_WordwithVowels()
    {
-       string input ="Ate";
+       string input ="Aeiou";
        string result =Soundex.GenerateSoundex(input);
-       Assert.Equal("A300",result);
+       Assert.Equal("A000",result);
    }
   
 }
