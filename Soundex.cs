@@ -10,59 +10,67 @@ public class Soundex
             return string.Empty;
         }
 
-        StringBuilder soundex = new StringBuilder();
-        soundex.Append(char.ToUpper(name[0]));
+        StringBuilder soundex = InitializeSoundex(name);
         char prevCode = GetSoundexCode(name[0]);
 
-        for (int i = 1; i < name.Length && soundex.Length < 4; i++)
+        AppendingSoundexCharacters(name,soundex,ref prevCode);
+        SoundexCode(ref soundex);
+        return soundex.ToString();
+    }
+    private static StringBuilder InitializeSoundex(string name)
+    {
+        StringBuilder soundex = new StringBuilder();
+        soundex.Append(char.ToUpper(name[0]));
+        return soundex;
+    }
+    private static void AppendingSoundexCharacters(string name , StringBuilder soundex,ref char prevCode)
+    {
+        foreach(char currentchar in name.Substring(1)) 
+        {   
+        if(soundex.Length >= 4)       //if length of soundex is 4 or more then break
         {
-            char code = GetSoundexCode(name[i]);
-            if (code != '0' && code != prevCode)
+            break;
+        }
+        Characters(currentchar,soundex,ref prevCode);
+    }
+        
+    }
+    private static void Characters(char character,StringBuilder soundex,ref char prevCode)
+    {
+        if(char.IsLetter(character))
+        {
+            char code =GetSoundexCode(character);
+            if(AppendCode(code,prevCode))
             {
                 soundex.Append(code);
-                prevCode = code;
+                prevCode=code;
             }
         }
-
-        while (soundex.Length < 4)
+    }
+    private static bool AppendCode(char code ,char prevCode) =>code !='0' && code != prevCode;
+    private static void SoundexCode(ref StringBuilder soundex)
+    {
+        while(soundex.Length<4)
         {
             soundex.Append('0');
         }
-
-        return soundex.ToString();
     }
-
-    private static char GetSoundexCode(char c)
+    private static readonly Dictionary<char,char> SoundexMap = new Dictionary<char,char>
     {
-        c = char.ToUpper(c);
-        switch (c)
-        {
-            case 'B':
-            case 'F':
-            case 'P':
-            case 'V':
-                return '1';
-            case 'C':
-            case 'G':
-            case 'J':
-            case 'K':
-            case 'Q':
-            case 'S':
-            case 'X':
-            case 'Z':
-                return '2';
-            case 'D':
-            case 'T':
-                return '3';
-            case 'L':
-                return '4';
-            case 'M':
-            case 'N':
-                return '5';
-            case 'R':
-                return '6';
-            default:
-                return '0'; // For A, E, I, O, U, H, W, Y
-        }
-    }
+        {'B','1'},{'F','1'},{'P','1'},{'V','1'},
+        {'C','2'},{'G','2'},{'J','2'},{'K','2'},{'Q','2'},{'S','2'},{'X','2'},{'Z','2'},
+        {'D','3'},{'T','3'},
+        {'L','4'},
+        {'M','5'},{'N','5'},
+        {'R','6'}
+    };
+private static char GetSoundexCode(char character)     //attempts to find the character in the dictionary,if found returns Soundex code else returns 0
+{
+    character = char.ToUpper(character);
+    return SoundexMap.TryGetValue(character,out char code)?code:'0';
 }
+}
+
+    
+
+       
