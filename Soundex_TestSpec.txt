@@ -1,0 +1,63 @@
+Test Specification for Soundex Algorithm
+
+Test Suit: SoundexTest
+Test Case1: GenerateSoundex_EmptyString_ReturnsEmptyString
+Description: Verify that expected output for an empty input should be an empty string.
+Input Data:
+* Input: "" (an empty string)
+* Expected Output: "" (an empty string)
+
+Test Case 2: GenerateSoundex_SingleCharacter_ReturnsPaddedCode
+Description: Verify that expected output for an SingleCharacter input should be a padded string.
+Input Data:
+* Input: "A" 
+* Expected Output: "A000" 
+
+Test Case 3: GenerateSoundex_ValidName_ReturnsCorrectSoundex
+Description: Verify that expected output for string with mixed characters returns a soundex code 
+Input Data
+* Input: "Abcd"
+* Expected Output: "A123"
+
+Test Case 4: GenerateSoundex_LongString_ReturnsTruncated
+Description: Verify that expected output for too long string returns truncated soundex code
+Input Data
+* Input: "JackandJill" 
+* Expected Output: "J532"
+
+Test Case 5: GenerateSoundex_NumbersInString_ReturnsCorrectSoundex
+ Description: Verify that output for string with numbers returns soundex code that ignores numbers
+Input Data
+* Input: "Abcd456"
+* Expected Output: "A123"
+
+Test Case 7: GenerateSoundex_TwoSimilarletters
+Description: verify that output for string with two similar letters returns soundexcode that ignores repetition 
+Input Data
+* Input: "Coffee"
+* Expected Output: "C100"
+
+Test Case 8: GenerateSoundex_NumbersAsFirstLetter
+Input Data
+* Input: "6blur" 
+* Expected Output: "6146"
+
+Test Case 9: GenerateSoundex_WordsWithSpace
+Description: verify that output for string with space returns soundex code that ignores space
+Input Data
+* Input: "Co ld"
+* Expected Output: "C430" 
+
+Test Case 10: GenerateSoundex_WithSpecialCharacters
+Description: verify that output for string with special returns soundex code that ignores special characters
+Input Data
+* Input: "Hello@abc"
+* Expected Output: "H412" 
+
+
+Test Case 11: GenerateSoundex_Vowels_ReturnsPaddedCode
+Description: Verify that expected output for Vowels input should be a padded string.
+Input Data
+* Input: "Aeiou"
+* Expected Output: "A000"
+
